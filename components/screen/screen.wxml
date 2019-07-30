@@ -1,2 +1,6 @@
-<!--components/screen/screen.wxml-->
-<text>components/screen/screen.wxml</text>
+<view class="screen" >
+  <navigator class="" >
+    搜索
+  </navigator>
+</view>
+  

@@ -1,2 +1,10 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<screen></screen>
+<!-- 轮播图 -->
+<swiper class="index_swiper" indicator-dots autoplay	circular>
+  <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+    <navigator url="{{item.navigator_url}}" >
+      <image  src="{{item.image_src}}" mode="widthFix" />
+    </navigator>
+  </swiper-item>
+</swiper>
+  
