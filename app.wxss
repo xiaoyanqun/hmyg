@@ -1,0 +1,14 @@
+@import './styles/iconfont';
+
+page,view,text,swiper,swiper-item,image,navigator,input,button{
+  box-sizing: border-box;
+}
+
+page{
+  --themeColor:#eb4450;
+  color: #666;
+  font-size:  28rpx;
+}
+image{
+  width: 100%;
+}
