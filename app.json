@@ -33,13 +33,13 @@
         "selectedIconPath": "./static/tabs/home-o.png"
       },
       {
-        "pagePath": "pages/cart/index",
+        "pagePath": "pages/category/index",
         "text": "分类",
         "iconPath": "./static/tabs/category.png",
         "selectedIconPath": "./static/tabs/category.png"
       },
       {
-        "pagePath": "pages/category/index",
+        "pagePath": "pages/cart/index",
         "text": "购物车",
         "iconPath": "./static/tabs/cart.png",
         "selectedIconPath": "./static/tabs/cart-o.png"
