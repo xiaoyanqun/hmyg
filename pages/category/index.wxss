@@ -1,1 +1,48 @@
-/* pages/category/index.wxss */
+.container {
+  display: flex;
+  height: calc(100vh - 90rpx);
+}
+.container .left {
+  flex: 1;
+}
+.container .left view {
+  text-align: center;
+  padding: 20rpx;
+  background-color: #f4f4f4;
+}
+.container .left .active {
+  border-left: 4rpx solid var(--themeColor);
+  background-color: #fff;
+  color: var(--themeColor);
+}
+.container .right {
+  flex: 3;
+}
+.container .right .right_title {
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.container .right .right_title .name {
+  margin: 0 10rpx;
+  font-size: 32rpx;
+  color: #000;
+}
+.container .right .right_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container .right .right_list navigator {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 33.3%;
+}
+.container .right .right_list navigator image {
+  width: 50%;
+}
+.container .right .right_list navigator view {
+  width: 100%;
+  text-align: center;
+}
