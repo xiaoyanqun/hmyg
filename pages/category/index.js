@@ -14,7 +14,6 @@ Page({
   async getAllCategoriesList(){
     const res =  await request({url: "/categories"}) 
     this.AllCategoriesList = res;
-    console.log(this.AllCategoriesList);
     wx.setStorageSync("cates", {
               time: Date.now(),
               data: this.AllCategoriesList
@@ -39,7 +38,7 @@ Page({
       activeIndex: e.currentTarget.dataset.index,
       scrollTop: 0
     });
-    this.getAllCategoriesList();
+    // this.getAllCategoriesList();
   },
   //options(Object)
   onLoad: function (options) {

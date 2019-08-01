@@ -1,7 +1,7 @@
 <screen></screen>
 <tabs tabs="{{tabs}}" bindItemChange="ItemChange">
   <view class="synthesize" wx:if="{{tabs[0].isActive}}">
-    <view class="synthesize_item" wx:for="{{goodsList}}" wx:key="goods_id">
+    <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}" class="synthesize_item" wx:for="{{goodsList}}" wx:key="goods_id">
       <view class="synthesize_img" hover-class="none" hover-stop-propagation="false">
         <image class="" src="{{item.goods_big_logo || 'http://www.eshian.com/images/404.gif'}}" mode="widthFix" />
       </view>
@@ -14,8 +14,8 @@
         </view>
 
       </view>
-    </view>
-
+    </navigator>
+  
 
   </view>
   <view class="" wx:elif="{{tabs[1].isActive}}">

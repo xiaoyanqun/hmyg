@@ -1,2 +1,58 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<!-- 底部toolbar -->
+<view class="toolbar">
+  <view class="toolbar_item" >
+    <text class="iconfont icon-kefu">
+    </text>
+    客服
+  </view>
+  <view class="toolbar_item" >
+    <text class="iconfont icon-yixianshi-">
+    </text>
+    分享
+  </view>
+  <view class="toolbar_item" >
+    <text class="iconfont icon-gouwuche">
+    </text>
+    购物车
+  </view>
+  <view class="cat" >
+    加入购物车
+  </view>
+  <view class="buy" >
+    立即购买
+  </view>
+    
+</view>
+
+<!-- 轮播图 -->
+<swiper class="" indicator-dots autoplay circular>
+  <swiper-item class="" item-id="" wx:for="{{goodsList.pics}}" wx:key="pics_id">
+    <image class="" src="{{item.pics_mid}}" mode="widthFix" />
+  </swiper-item>
+</swiper>
+<!-- 商品标题 -->
+<view class="goods_info" hover-class="none" hover-stop-propagation="false">
+  <view class="goods_title" hover-class="none" hover-stop-propagation="false">
+    ￥{{goodsList.goods_price}}
+  </view>
+  <view class="gods_content" hover-class="none" hover-stop-propagation="false">
+    <view class="content_left" hover-class="none" hover-stop-propagation="false">
+      {{goodsList.goods_name}}
+    </view>
+    <view class="content_right" hover-class="none" hover-stop-propagation="false">
+      <text class="iconfont icon-shoucang" selectable="false" space="false" decode="false">
+      </text>
+      收藏
+    </view>
+  </view>
+</view>
+<!-- 图文详情 -->
+<view class="goods_details">
+  <view class="details_title">
+    图文详情
+  </view>
+  <rich-text class="" nodes="{{goodsList.goods_introduce}}">
+
+  </rich-text>
+
+</view>
