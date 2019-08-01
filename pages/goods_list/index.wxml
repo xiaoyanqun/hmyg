@@ -1,2 +1,27 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<screen></screen>
+<tabs tabs="{{tabs}}" bindItemChange="ItemChange">
+  <view class="synthesize" wx:if="{{tabs[0].isActive}}">
+    <view class="synthesize_item" wx:for="{{goodsList}}" wx:key="goods_id">
+      <view class="synthesize_img" hover-class="none" hover-stop-propagation="false">
+        <image class="" src="{{item.goods_big_logo || 'http://www.eshian.com/images/404.gif'}}" mode="widthFix" />
+      </view>
+      <view class="synthesize_content">
+        <view class="content_title">
+          {{item.goods_name}}
+        </view>
+        <view class="content_price">
+          ￥{{item.goods_price}}
+        </view>
+
+      </view>
+    </view>
+
+
+  </view>
+  <view class="" wx:elif="{{tabs[1].isActive}}">
+    正在开发。。。
+  </view>
+  <view class="" wx:elif="{{tabs[2].isActive}}">
+    正在开发。。。
+  </view>
+</tabs>

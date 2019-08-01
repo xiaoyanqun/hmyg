@@ -1,4 +1,7 @@
 export const request = (params)=>{
+  wx.showLoading({
+    title: '加载中'
+  });
   // 接口前缀
   const baseUrl = 'https://api.zbztb.cn/api/public/v1'
   return new Promise((resolve,reject)=>{
@@ -11,6 +14,9 @@ export const request = (params)=>{
       fail: (err) => {
         reject(err)
       },
+      complete:()=>{
+        wx.hideLoading()
+      }
     });
   })
 }

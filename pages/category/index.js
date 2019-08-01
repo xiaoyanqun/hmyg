@@ -1,71 +1,69 @@
-import {request} from '../../request/request'
+import {
+  request
+} from "../../request/request";
+import regeneratorRuntime from '../../lib/runtime/runtime'
 Page({
   data: {
-    CategoriesList:[],
-    ChildList:[],
-    activeIndex:0,
-    scrollTop:0
+    CategoriesList: [],
+    ChildList: [],
+    activeIndex: 0,
+    scrollTop: 0
   },
-  AllCategoriesList:[],
+  AllCategoriesList: [],
   //获取大分类数据
-  getAllCategoriesList(){
-    request({url:"/categories"})
-    .then(res=>{
-      this.AllCategoriesList =res
-      const arr = this.AllCategoriesList.map(v=>{
-        const obj = {
-          cat_id:v.cat_id,
-          cat_name:v.cat_name
-        }
-        return obj
-      })
-      this.setData({
-        CategoriesList:arr,
-        ChildList:this.AllCategoriesList[this.data.activeIndex].children
-      })
+  async getAllCategoriesList(){
+    const res =  await request({url: "/categories"}) 
+    this.AllCategoriesList = res;
+    console.log(this.AllCategoriesList);
+    wx.setStorageSync("cates", {
+              time: Date.now(),
+              data: this.AllCategoriesList
+            });
+    const arr = this.AllCategoriesList.map(v => {
+      const obj = {
+        cat_id: v.cat_id,
+        cat_name: v.cat_name
+      };
+      return obj;
+    });
+    this.setData({
+      CategoriesList: arr,
+      ChildList: this.AllCategoriesList[0].children
     })
   },
   // 点击分类
-  handleIndex(e){
+  handleIndex(e) {
+    const arr = this.AllCategoriesList[e.currentTarget.dataset.index].children;
     this.setData({
-      activeIndex: e.currentTarget.dataset.index
-    })
-    this.getAllCategoriesList()
-    this.setData({
-      scrollTop:0
-    })
+      ChildList: arr,
+      activeIndex: e.currentTarget.dataset.index,
+      scrollTop: 0
+    });
+    this.getAllCategoriesList();
   },
   //options(Object)
-  onLoad: function(options) {
-    this.getAllCategoriesList()
+  onLoad: function (options) {
+    // 获取本地缓存数据
+    let cates = wx.getStorageSync("cates");
+    if (!cates) {
+      this.getAllCategoriesList();
+    } else {
+      if (Date.now() - cates.time > 1000 * 10) {
+        this.getAllCategoriesList();
+      } else {
+        this.AllCategoriesList = cates.data;
+        const arr = this.AllCategoriesList.map(v => {
+          const obj = {
+            cat_id: v.cat_id,
+            cat_name: v.cat_name
+          };
+          return obj;
+        });
+        this.setData({
+          CategoriesList: arr,
+          ChildList: this.AllCategoriesList[0].children
+        })
+      }
+    }
   },
-  onReady: function() {
-    
-  },
-  onShow: function() {
-    
-  },
-  onHide: function() {
-
-  },
-  onUnload: function() {
-
-  },
-  onPullDownRefresh: function() {
-
-  },
-  onReachBottom: function() {
-
-  },
-  onShareAppMessage: function() {
-
-  },
-  onPageScroll: function() {
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap:function(item) {
-
-  }
 });
-  

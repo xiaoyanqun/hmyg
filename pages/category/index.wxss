@@ -33,6 +33,7 @@
   flex-wrap: wrap;
 }
 .container .right .right_list navigator {
+  padding: 15rpx;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
