@@ -1,2 +1,25 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 收货地址按钮 -->
+<button wx:if="{{!user.All}}" bindtap="handleSite" class="btn" type="primary" plain>添加收货地址</button>
+
+<!-- 用户信息 -->
+<view class="user" wx:else >
+  <view class="user_title" >
+    <view class="user_name" >
+      收货人：{{user.userName}}
+    </view>
+    <view class="user_telNumber" hover-class="none" hover-stop-propagation="false">
+      {{user.telNumber}}
+    </view>
+  </view>
+  <view class="user_All" hover-class="none" hover-stop-propagation="false">
+    {{user.All}}
+  </view>
+</view>
+<!-- 购物车 -->
+<view class="cat" hover-class="none" hover-stop-propagation="false">
+  <view class="cat_title" hover-class="none" hover-stop-propagation="false">
+    购物车
+  </view>
+</view>
+  
+  

@@ -20,18 +20,38 @@ Page({
     this.setData({
       goodsList:{
         pics:res.pics,
-        goods_introduce:res.goods_introduce,
+        goods_introduce:res.goods_introduce.replace(/\.webp/g,".jpg"),
         goods_name:res.goods_name,
         goods_price:res.goods_price
       }
     })
   },
-
+  handleImgIndex(e){
+    const {index} = e.currentTarget.dataset
+    const urls = this.data.goodsList.pics.map(v=>v.pics_big)
+    console.log(urls)
+    wx.previewImage({
+      current: urls[index],
+      urls,
+    });
+      
+  },
+  addCat(){
+    const cats = wx.getStorageSync('cats')||{};
+  if(cats[this.GoodsList.goods_id]){
+    cats[this.GoodsList.goods_id].num++
+    }else{
+      cats[this.GoodsList.goods_id] = this.GoodsList
+      cats[this.GoodsList.goods_id].num = 1
+    }
+    wx.setStorageSync('cats', cats);
+      
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.goods_id)
+    console.log(this.GoodsList)
     this.goods_id = options.goods_id
     this.getGoodsById()
   },

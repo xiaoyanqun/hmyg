@@ -1,1 +1,19 @@
-/* pages/cart/index.wxss */
+.btn {
+  margin-top: 20rpx;
+  width: 90vw;
+}
+.user {
+  padding: 20rpx 10rpx;
+  color: #000;
+}
+.user .user_title {
+  display: flex;
+  justify-content: space-between;
+}
+.cat .cat_title {
+  padding: 20rpx 10rpx;
+  font-size: 38rpx;
+  color: #000;
+  border-top: 2rpx solid var(--themeColor);
+  border-bottom: 2rpx solid var(--themeColor);
+}
