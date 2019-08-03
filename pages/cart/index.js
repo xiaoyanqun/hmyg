@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../lib/runtime/runtime'
-import {openSetting,chooseAddress,getSetting} from  '../../lib/wxAsync/wxAsync'
+import {openSetting,chooseAddress,getSetting,showModal,showToast} from  '../../lib/wxAsync/wxAsync'
 Page({
 
   /**
@@ -11,6 +11,7 @@ Page({
     isSelectAll:false,   //是否全选
     totalPrice:0,  //总价
     totalNum:0,   //总数量
+    hasGoods: false  // 购物车有没有商品
   },
   // 获取收货地址按钮
   async handleSite(){
@@ -52,6 +53,38 @@ Page({
     }
     this.setCart(cats)
   },
+  // 加减数量
+  async handleEdit(e){
+    const {edit,id} = e.currentTarget.dataset
+    const {cats} = this.data
+    if(cats[id].num === 1 && parseInt(edit) === -1){
+     const res = await showModal({content:'你确定要删除吗'})
+     console.log(res)
+     if(res.confirm){
+      delete cats[id]
+      this.setCart(cats)
+     }else{
+      console.log('用户点击取消')
+     }
+    }else{
+      cats[id].num += parseInt(edit)
+    }
+    this.setCart(cats)
+  },
+  // 结算
+  async handleClose(){
+    const {user,totalNum} = this.data
+    if(!user.All){
+     await showToast({content:'您没有选择收货地址'})
+    }else if(totalNum <= 0){
+      await showToast({content:'您没有要结算的商品'})
+    }else{
+      wx.navigateTo({
+        url: '/pages/pay/index',
+      });
+        
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -82,11 +115,17 @@ Page({
       isSelectAll = false
      }
    });
+   if(catsArr.length <= 0){
+    isSelectAll = false
+   }
+  //  isSelectAll = catsArr.length?true:false
+   const hasGoods =  catsArr.length? true:false
    this.setData({
     totalPrice,
     totalNum,
     isSelectAll,
-    cats
+    cats,
+    hasGoods
    })
    wx.setStorageSync('cats', cats);
      

@@ -16,12 +16,12 @@
   </view>
 </view>
 <!-- 购物车 -->
-<view class="cat">
-  <view class="cat_title">
+<view  class="cat">
+  <view  class="cat_title">
     购物车
   </view>
   <!-- 购买商品 -->
-  <view class="cat_content">
+  <view wx:if="{{hasGoods}}" class="cat_content">
     <view class="cat_item" wx:for="{{cats}}" wx:key="index">
       <view class="cat_checkbox">
         <checkbox-group bindchange="handleChangeBy" data-id="{{item.goods_id}}">
@@ -42,13 +42,13 @@
             ￥{{item.goods_price}}
           </view>
           <view class="cat_info_util">
-            <view class="util_edit">
+            <view class="util_edit" bindtap="handleEdit" data-edit="-1" data-id="{{item.goods_id}}">
               -
             </view>
             <view class="util_num">
               {{item.num}}
             </view>
-            <view class="util_edit">
+            <view class="util_edit" bindtap="handleEdit" data-edit="1"  data-id="{{item.goods_id}}">
               +
             </view>
 
@@ -57,8 +57,14 @@
       </view>
     </view>
   </view>
+  <view wx:else="{{hasGoods}}" class="" >
+   <navigator class="" target="" url="/pages/category/index" open-type="switchTab">
+    <image class="" src="http://img.zcool.cn/community/0173c3581be304a84a0d304fa90620.gif" mode="widthFix"  />
+   </navigator>
+  </view>
 </view>
 
+  
   <!-- 底部工具栏 -->
 <view class="util">
   <view class="util_checkbox">
@@ -74,7 +80,7 @@
       包含运费
     </view>
   </view>
-  <view class="util_close" >
+  <view class="util_close" bindtap="handleClose">
     结算({{totalNum}})
   </view>
 </view>
