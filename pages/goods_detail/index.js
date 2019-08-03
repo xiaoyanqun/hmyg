@@ -43,8 +43,14 @@ Page({
     }else{
       cats[this.GoodsList.goods_id] = this.GoodsList
       cats[this.GoodsList.goods_id].num = 1
+      cats[this.GoodsList.goods_id].isSelect = true
     }
     wx.setStorageSync('cats', cats);
+    wx.showToast({
+      title: '加入成功',
+      icon: "success",
+      mask: true
+    });
       
   },
   /**

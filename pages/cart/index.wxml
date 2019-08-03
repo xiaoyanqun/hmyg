@@ -2,9 +2,9 @@
 <button wx:if="{{!user.All}}" bindtap="handleSite" class="btn" type="primary" plain>添加收货地址</button>
 
 <!-- 用户信息 -->
-<view class="user" wx:else >
-  <view class="user_title" >
-    <view class="user_name" >
+<view class="user" wx:else>
+  <view class="user_title">
+    <view class="user_name">
       收货人：{{user.userName}}
     </view>
     <view class="user_telNumber" hover-class="none" hover-stop-propagation="false">
@@ -16,10 +16,65 @@
   </view>
 </view>
 <!-- 购物车 -->
-<view class="cat" hover-class="none" hover-stop-propagation="false">
-  <view class="cat_title" hover-class="none" hover-stop-propagation="false">
+<view class="cat">
+  <view class="cat_title">
     购物车
   </view>
+  <!-- 购买商品 -->
+  <view class="cat_content">
+    <view class="cat_item" wx:for="{{cats}}" wx:key="index">
+      <view class="cat_checkbox">
+        <checkbox-group bindchange="handleChangeBy" data-id="{{item.goods_id}}">
+          <checkbox class="" color="red" checked="{{item.isSelect}}">
+          </checkbox>
+        </checkbox-group>
+        
+      </view>
+      <view class="img">
+        <image src="{{item.goods_small_logo}}" mode="widthFix" />
+      </view>
+      <view class="cat_info">
+        <view class="cat_info_title">
+          {{item.goods_name}}
+        </view>
+        <view class="cat_info_num">
+          <view class="cat_info_price">
+            ￥{{item.goods_price}}
+          </view>
+          <view class="cat_info_util">
+            <view class="util_edit">
+              -
+            </view>
+            <view class="util_num">
+              {{item.num}}
+            </view>
+            <view class="util_edit">
+              +
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
-  
-  
+
+  <!-- 底部工具栏 -->
+<view class="util">
+  <view class="util_checkbox">
+    <checkbox-group bindchange="handleChangeAll">
+      <checkbox class="" color="red" checked="{{isSelectAll}}">
+        全选
+      </checkbox>
+    </checkbox-group>
+  </view>
+  <view class="util_info" >
+    <view class="util_info_title">合计：<text class="util_title_price">￥ {{totalPrice}}</text></view>
+    <view class="util_info_serve">
+      包含运费
+    </view>
+  </view>
+  <view class="util_close" >
+    结算({{totalNum}})
+  </view>
+</view>

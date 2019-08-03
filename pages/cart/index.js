@@ -6,8 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user:{}
+    user:{},
+    cats:{},
+    isSelectAll:false,   //是否全选
+    totalPrice:0,  //总价
+    totalNum:0,   //总数量
   },
+  // 获取收货地址按钮
   async handleSite(){
     // 调用判断是否授权过接口
     const res1 = await getSetting()
@@ -29,23 +34,61 @@ Page({
      
       
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 单选
+  handleChangeBy(e){
+    console.log(e)
+    const {id} = e.currentTarget.dataset
+    const {cats} = this.data
+    cats[id].isSelect =  !cats[id].isSelect
+    this.setCart(cats)
   },
-
+  // 全选
+  handleChangeAll(){
+    let {cats,isSelectAll} = this.data
+    isSelectAll = !isSelectAll
+    for(let key in cats){
+      cats[key].isSelect = isSelectAll
+      console.log(cats[key].isSelect)
+    }
+    this.setCart(cats)
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const user = wx.getStorageSync('user');
-    console.log(user)
+    const user = wx.getStorageSync('user') || {};
+    const cats = wx.getStorageSync('cats') || {};
     this.setData({
-      user
+      user,
+      cats
     })
+    this.setCart(cats);
   },
-
+  setCart(cats){
+   let catsArr =  Object.values(cats)
+      //1 计算全选
+     let isSelectAll = true
+     // 2 计算总的价格 
+     let totalPrice = 0;
+     // 3 计算 要购买的总数量
+     let totalNum = 0;
+   catsArr.forEach(v => {
+    //  计算选择商品的价格
+     if(v.isSelect){
+      totalPrice += v.goods_price * v.num
+      totalNum += v.num
+     }else{
+      //  只要有一个没选则取消全选
+      isSelectAll = false
+     }
+   });
+   this.setData({
+    totalPrice,
+    totalNum,
+    isSelectAll,
+    cats
+   })
+   wx.setStorageSync('cats', cats);
+     
+  }
 })

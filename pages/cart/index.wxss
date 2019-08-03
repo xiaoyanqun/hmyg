@@ -1,6 +1,10 @@
+page {
+  padding-bottom: 90rpx;
+}
 .btn {
   margin-top: 20rpx;
   width: 90vw;
+  margin-bottom: 20rpx;
 }
 .user {
   padding: 20rpx 10rpx;
@@ -13,7 +17,107 @@
 .cat .cat_title {
   padding: 20rpx 10rpx;
   font-size: 38rpx;
-  color: #000;
+  color: var(--themeColor);
   border-top: 2rpx solid var(--themeColor);
   border-bottom: 2rpx solid var(--themeColor);
+}
+.cat .cat_content .cat_item {
+  display: flex;
+  border-bottom: 1rpx solid #ccc;
+}
+.cat .cat_content .cat_item .cat_checkbox {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat .cat_content .cat_item .img {
+  flex: 3;
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat .cat_content .cat_item .img image {
+  width: 80%;
+}
+.cat .cat_content .cat_item .cat_info {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cat .cat_content .cat_item .cat_info .cat_info_title {
+  font-size: 28rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+.cat .cat_content .cat_item .cat_info .cat_info_num {
+  display: flex;
+  justify-content: space-between;
+}
+.cat .cat_content .cat_item .cat_info .cat_info_num .cat_info_price {
+  font-size: 40rpx;
+  color: var(--themeColor);
+}
+.cat .cat_content .cat_item .cat_info .cat_info_num .cat_info_util {
+  padding: 0 10rpx;
+  display: flex;
+}
+.cat .cat_content .cat_item .cat_info .cat_info_num .cat_info_util .util_edit {
+  border: 1rpx solid #ccc;
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat .cat_content .cat_item .cat_info .cat_info_num .cat_info_util .util_num {
+  font-size: 28rpx;
+  width: 50rpx;
+  height: 50rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.util {
+  border-top: 1rpx solid #ccc;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 90rpx;
+  display: flex;
+}
+.util .util_checkbox {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.util .util_info {
+  padding: 0 10rpx;
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  text-align: right;
+}
+.util .util_info .util_info_title {
+  align-items: center;
+}
+.util .util_info .util_info_title .util_title_price {
+  font-size: 40rpx;
+  color: var(--themeColor);
+}
+.util .util_close {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--themeColor);
+  color: #fff;
+  font-size: 36rpx;
 }
