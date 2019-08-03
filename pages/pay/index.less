@@ -1,0 +1,118 @@
+page{
+  padding-bottom: 90rpx;
+}
+.user{
+  padding: 20rpx 10rpx;
+  color:#000;
+  .user_title{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.cat{
+  .cat_title{
+    padding: 20rpx 10rpx;
+    font-size: 38rpx;
+    color: var(--themeColor);
+    border-top: 2rpx solid var(--themeColor);
+    border-bottom: 2rpx solid var(--themeColor);
+  }
+  .cat_content {
+    
+    .cat_item {
+      display: flex;
+      border-bottom: 1rpx solid #ccc;
+      .img {
+        flex: 3;
+        padding: 20rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image {
+          width: 70%;
+        }
+      }
+
+      .cat_info {
+        flex: 6;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .cat_info_title {
+          font-size: 28rpx;
+          // color: #000;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          -webkit-line-clamp:2;
+        }
+
+        .cat_info_num {
+          display: flex;
+          justify-content: space-between;
+          .cat_info_price {
+            font-size: 40rpx;
+            // font-weight: 600;
+            color:var(--themeColor)
+          }
+
+          .cat_info_util {
+            padding:0 10rpx;
+            display: flex;
+            .util_num{
+              font-size: 28rpx;
+              width: 50rpx;
+              height: 50rpx;
+              padding: 0 20rpx;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.util {
+  border-top: 1rpx solid #ccc;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 90rpx;
+  display: flex;
+  .util_info {
+    padding: 0 10rpx;
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    text-align: right;  
+    .util_info_title {
+      // display: flex;
+      align-items: center;
+      .util_title_price {
+        font-size: 40rpx;
+        color: var(--themeColor)
+      }
+    }
+
+    .util_info_serve {
+
+    }
+  }
+
+  .util_close {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--themeColor);
+    color: #fff;
+    font-size: 36rpx;
+  }
+}
+
+
