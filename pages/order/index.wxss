@@ -1,1 +1,19 @@
-/* pages/order/index.wxss */
+.form_item {
+  padding: 20rpx;
+  border-bottom: 2rpx solid #dedede;
+}
+.form_item .item_row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rpx;
+}
+.form_item .item_row .row_number {
+  font-size: 26rpx;
+}
+.form_item .item_row .row_price {
+  color: var(--themeColor);
+  font-size: 32rpx;
+}
+.form_item .item_row .row_date {
+  color: #000;
+}
