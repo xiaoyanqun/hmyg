@@ -20,7 +20,7 @@
   </view>
   <!-- 购买商品 -->
   <view class="cat_content">
-    <view class="cat_item" wx:for="{{cats}}" wx:key="index">
+    <view class="cat_item" wx:for="{{cats}}" wx:key="index" wx:if="{{item.isSelect}}">
       <view class="img">
         <image src="{{item.goods_small_logo}}" mode="widthFix" />
       </view>

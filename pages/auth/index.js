@@ -11,14 +11,20 @@ Page({
   },
   async handleClike(e){
     console.log(e)
+    // 获取用户信息
     const {encryptedData,rawData,iv,signature} = e.detail
+    // 获取用户登录code
     const {code} = await login()
     const obj = {encryptedData,rawData,iv,signature,code}
-    const res1 = await request({url:"/users/wxlogin",method:'post',data:obj})
-    console.log(res1)
-    // wx.navigateTo({
-    //   url: '/pages/pay/index',
-    // });
+    // 获取登录token
+    const {token} = await request({url:"/users/wxlogin",method:'post',data:obj})
+    // 存储token值
+    wx.setStorageSync('token', token);
+      
+    wx.navigateBack({
+      // 返回上一个页面 
+      delta: 1
+    });
       
   }
 })

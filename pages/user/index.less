@@ -1,0 +1,27 @@
+.user_info{
+  position: relative;
+  height: 45vh;
+  overflow: hidden;
+  .img_big{
+    image{
+      filter: blur(10px)
+    }
+  }
+  .img_sm{
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+    z-index: 1;
+    position: absolute;
+    width: 160rpx;
+    height:160rpx;
+    color: #fff;
+    text-align: center;
+    .nickName{
+      margin-top: 50rpx;
+    }
+    image{
+      border-radius: 50%;
+    }
+  }
+}

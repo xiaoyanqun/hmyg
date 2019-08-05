@@ -1,2 +1,13 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<!-- 用户信息 -->
+<view class="user_info" hover-class="none" hover-stop-propagation="false">
+  <view class="img_big" hover-class="none" hover-stop-propagation="false">
+    <image class="" src="{{userInfo.avatarUrl}}" mode="widthFix" lazy-load="false"/>
+  </view>
+  <view class="img_sm" hover-class="none" hover-stop-propagation="false">
+    <image class="" src="{{userInfo.avatarUrl}}" mode="widthFix"/>
+    <view class="nickName" >
+      {{userInfo.nickName}}
+    </view>
+  </view>
+</view>
+  

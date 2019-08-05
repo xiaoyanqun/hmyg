@@ -1,1 +1,25 @@
-/* pages/user/index.wxss */
+.user_info {
+  position: relative;
+  height: 45vh;
+  overflow: hidden;
+}
+.user_info .img_big image {
+  filter: blur(10px);
+}
+.user_info .img_sm {
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  z-index: 1;
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  color: #fff;
+  text-align: center;
+}
+.user_info .img_sm .nickName {
+  margin-top: 50rpx;
+}
+.user_info .img_sm image {
+  border-radius: 50%;
+}
