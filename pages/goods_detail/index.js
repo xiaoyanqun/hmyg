@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsList:{}
+    goodsList:{},
+    iscollect:false,
   },
   goods_id:'',
   GoodsList:{},
@@ -53,6 +54,31 @@ Page({
     });
       
   },
+  // 点击收藏按钮
+  handlecollect(){
+   const collect = wx.getStorageSync('collect') || []
+   let index = collect.findIndex(v =>v.goods_id === parseInt(this.goods_id))
+   if(index === -1){
+    collect.push(this.GoodsList)
+    wx.showToast({
+      title: '收藏成功',
+      icon: 'success',
+      mask: true,
+    });
+      
+   }else{
+    collect.splice(index,1)
+    wx.showToast({
+      title: '取消成功',
+      icon: 'success',
+      mask: true,
+    });
+   }
+   this.setData({
+    iscollect : !this.data.iscollect
+   })
+   wx.setStorageSync('collect',collect)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,6 +86,12 @@ Page({
     console.log(this.GoodsList)
     this.goods_id = options.goods_id
     this.getGoodsById()
+    const collect = wx.getStorageSync("collect") || []
+    const iscollect = collect.some(v=>v.goods_id === parseInt(this.goods_id))
+    // console.log(iscollect)
+    this.setData({
+      iscollect
+    })
   },
 
   /**

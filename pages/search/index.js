@@ -1,13 +1,46 @@
-// pages/search/index.js
+import {request} from '../../request/request'
+import regeneratorRuntime from '../../lib/runtime/runtime'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    value:"",
+    goodsList:[],
+    isButton:false,
   },
-
+  Time:-1,
+  // 搜索
+   handleInput(e){
+    const value = e.detail.value
+    console.log( e.detail.value)
+    if(!value.trim()){
+      return
+    }else{
+      clearTimeout(this.Time)
+      this.Time = setTimeout(()=>{
+        this.search(value)
+      },1000)
+    
+    }
+  },
+  // 取消
+  handledel(){
+    this.setData({
+      value:"",
+      goodsList:[],
+      isButton:false
+    })
+  },
+  async search(query){
+    const res = await request({url:"/goods/qsearch",data:{query}})
+    console.log(res)
+    this.setData({
+      goodsList:res,
+      isButton:true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

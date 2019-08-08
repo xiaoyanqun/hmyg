@@ -36,6 +36,9 @@ swiper swiper-item image {
   justify-content: center;
   align-items: center;
 }
+.goods_info .gods_content .content_right .icon-shoucang1 {
+  color: var(--themeColor);
+}
 .goods_info .gods_content .content_right .iconfont {
   font-size: 40rpx;
 }

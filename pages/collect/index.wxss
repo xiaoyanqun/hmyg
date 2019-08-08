@@ -1,1 +1,12 @@
-/* pages/collect/index.wxss */
+page {
+  background-color: #f0f4f7;
+}
+.btn {
+  display: flex;
+  margin-top: 10rpx;
+}
+.btn .btn_item {
+  background-color: #fff;
+  padding: 10rpx;
+  margin-left: 20rpx;
+}

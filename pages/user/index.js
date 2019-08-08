@@ -11,6 +11,10 @@ Page({
     
   },
   onShow: function() {
+    const collect =  wx.getStorageSync('collect')
+    this.setData({
+      collectnum:collect.length
+    })
     const userInfo =  wx.getStorageSync('userInfo');
     if(!userInfo){
      wx.navigateTo({

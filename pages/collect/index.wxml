@@ -1,2 +1,16 @@
-<!--pages/collect/index.wxml-->
-<text>pages/collect/index.wxml</text>
+<tabs tabs="{{tabs}}" bindItemChange="ItemChange">
+    <view class="synthesize" wx:if="{{tabs[0].isActive}}">
+     <view class="btn" hover-class="none" hover-stop-propagation="false">
+        <view class="btn_item" wx:for="{{btnList}}" wx:key="id">
+            {{item.name}}
+          </view>
+     </view>
+       
+    </view>
+    <view class="" wx:elif="{{tabs[1].isActive}}">
+      正在开发。。。
+    </view>
+    <view class="" wx:elif="{{tabs[2].isActive}}">
+      正在开发。。。
+    </view>
+</tabs> 

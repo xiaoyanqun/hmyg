@@ -14,8 +14,8 @@
     <view class="content_left" hover-class="none" hover-stop-propagation="false">
       {{goodsList.goods_name}}
     </view>
-    <view class="content_right" hover-class="none" hover-stop-propagation="false">
-      <text class="iconfont icon-shoucang" selectable="false" space="false" decode="false">
+    <view bindtap="handlecollect" class="content_right" hover-class="none" hover-stop-propagation="false">
+      <text class="iconfont {{iscollect?'icon-shoucang1':'icon-shoucang'}}" selectable="false" space="false" decode="false">
       </text>
       收藏
     </view>

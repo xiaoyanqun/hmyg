@@ -13,30 +13,30 @@
 <!-- 用户工具 -->
 <view class="user_util" >
   <view class="util_collect util_item">
-    <view class="collect_item">
+    <navigator class="collect_item">
       <view class="">
         0
       </view>
       收藏的店铺
-    </view>
-    <view class="collect_item">
+    </navigator>
+    <navigator url="/pages/collect/index" class="collect_item">
       <view class="">
-        0
+        {{collectnum}}
       </view>
       收藏的商品
-    </view>
-    <view class="collect_item">
+    </navigator>
+    <navigator class="collect_item">
       <view class="">
         0
       </view>
      关注的商品
-    </view>
-    <view class="collect_item">
+    </navigator>
+    <navigator class="collect_item">
       <view class="">
         0
       </view>
       我的足迹
-    </view>
+    </navigator>
   </view>
   <view class="myForm util_item">
     <view class="myForm_title">

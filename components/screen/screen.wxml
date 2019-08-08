@@ -1,5 +1,5 @@
 <view class="screen" >
-  <navigator url="" class="" hover-class="none">
+  <navigator url="/pages/search/index" class="" hover-class="none">
     搜索
   </navigator>
 </view>
